@@ -26,7 +26,7 @@ export default function AnimatedHero() {
                     </p>
 
                     <Link href="/notes">
-                        <Button size="lg" className="shadow-xl py-3 px-8 rounded-xl text-xl bg-[#A590DB] hover:bg-[#9582C5]">
+                        <Button size="lg" className="shadow-xl py-3 px-8 rounded-xl text-xl bg-[#A590DB] hover:bg-[#9582C5] active:bg-[#8473AF]">
                             Take Notes Now
                         </Button>
                     </Link>

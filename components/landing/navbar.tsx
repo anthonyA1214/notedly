@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import SignInButton from '@/components/signinbutton';
+import SignInButton from '@/components/landing/signinbutton';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -31,9 +31,11 @@ export default function NavBar() {
                 </div>
                 
                 <div className="hidden md:flex items-center gap-4">
-                    <Button variant="ghost">
-                        Try the app
-                    </Button>
+                    <Link href="/notes">
+                        <Button variant="ghost">
+                            Try the app
+                        </Button>
+                    </Link>
                     <SignInButton />
                 </div>
 
@@ -57,7 +59,11 @@ export default function NavBar() {
                         >
                             About
                         </Link>
-                        <Button variant="ghost">Try the app</Button>
+                        <Link href="/notes">
+                            <Button variant="ghost">
+                                Try the app
+                            </Button>
+                        </Link>         
                         <SignInButton />
                     </SheetContent>
                 </Sheet>
