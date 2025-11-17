@@ -1,6 +1,6 @@
 "use client";
 
-import FeatureCard from "@/components/featurecard";
+import FeatureCard from "@/components/landing/featurecard";
 import { Zap, Folder, Cloud } from "lucide-react";
 import { motion } from "framer-motion";
 

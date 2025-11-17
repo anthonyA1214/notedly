@@ -24,7 +24,7 @@ export default function AnimatedCallToAction() {
                 </p>
 
                 <Link href="/notes">
-                    <Button size="lg" className="bg-[#A590DB] text-xl shadow-xl">
+                    <Button size="lg" className="bg-[#A590DB] hover:bg-[#9582C5] active:bg-[#8473AF] text-xl shadow-xl">
                         Start Taking Notes Now
                     </Button>
                 </Link>

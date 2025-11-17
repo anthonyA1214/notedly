@@ -1,6 +1,6 @@
-import AnimatedHero from '@/components/animatedhero';
-import AnimatedFeatures from '@/components/animatedfeatures';
-import AnimatedCallToAction from '@/components/animatedcalltoaction';
+import AnimatedHero from '@/components/landing/animatedhero';
+import AnimatedFeatures from '@/components/landing/animatedfeatures';
+import AnimatedCallToAction from '@/components/landing/animatedcalltoaction';
 
 export default function Page() {
     return (
