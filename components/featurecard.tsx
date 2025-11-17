@@ -8,7 +8,7 @@ export default function FeatureCard({
     description: string;
 }) {
     return (
-        <div className="flex px-6 py-12 bg-white rounded-xl shadow-lg border border-opacity-10 gap-6 w-96 h-64 overflow-hidden">
+        <div className="flex w-full px-6 py-12 bg-white rounded-xl shadow-lg border border-opacity-10 gap-6 h-64 overflow-hidden">
             <div>
                 <div className="shrink-0">
                     <Icon className="w-10 h-10 text-[#9582C5]"/>

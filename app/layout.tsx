@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { montserrat } from "@/app/config/fonts";
 import "./globals.css";
 import NavBar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "Notedly",
@@ -20,6 +21,7 @@ export default function RootLayout({
       >
         <NavBar />
         {children}
+        <Footer />
       </body>
     </html>
   );
