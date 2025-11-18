@@ -15,6 +15,8 @@ export default async function NotesPage({
     }
 
     return (
-        <h1>hotdog</h1>
+        <>
+            <h1 className="text-2xl font-bold">{page.title}</h1>
+        </>
     )
 }
