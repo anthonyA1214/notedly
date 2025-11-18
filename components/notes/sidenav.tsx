@@ -1,7 +1,7 @@
 import { Plus } from "lucide-react"
 import Image from 'next/image';
 import Link from 'next/link';
-
+import { getSideNavItems } from "@/lib/services/sidenav";
 import {
     Sidebar,
     SidebarContent,
@@ -14,42 +14,16 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { SideNavItem } from "@/types/navigation";
+
 import SideNavClient from "@/components/notes/sidenavclient";
 
 // Menu items.
-const items: SideNavItem[] = [
-    {
-        id: "01KAAC9KFEK15JG66059E1SY16",
-        title: "Notes",
-        iconName: "StickyNote",
-    },
-    {
-        id: "01KAACB67E08QQFB5EHC8TKHE3",
-        title: "To-do lists",
-        iconName: "Check",
-    },
-    {
-        id: "01KAACBBDCYFAEMFMN6V83W5AQ",
-        title: "Journal",
-        iconName: "Pencil",
-    },
-    {
-        id: "01KAACBGQB2KC97ATSANA27XKA",
-        title: "Announcements",
-        iconName: "Megaphone",
-    },
-    {
-        id: "01KAACBP48XCKVN47X9B54MJE2",
-        title: "Dashboard",
-        iconName: "Hash",
-    },
-]
-
-export function SideNav() {
+export async function SideNav() {
+    const items = await getSideNavItems();
+    
     return (
         <div className="flex min-h-screen">
-            <Sidebar variant="inset" collapsible="none">
+            <Sidebar variant="inset" collapsible="none" className="border-r">
                 <SidebarHeader className="py-6">
                     <Link href="/" className="flex items-center gap-2">
                         <Image 

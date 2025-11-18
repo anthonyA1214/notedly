@@ -33,7 +33,7 @@ export default function SideNavClient({ items }: SideNavClientProps) {
                 return (
                     <SidebarMenuItem key={item.title}>
                         <SidebarMenuButton asChild className="py-5">
-                            <Link href={`/notes/${item.id}`} className="flex items-center justify-between group">
+                            <Link href={`/notes/${item.slug}`} className="flex items-center justify-between group">
                                 <div className={`flex items-center gap-3 text-lg ${activeItemId === item.id ? "opacity-100" : "opacity-50 group-hover:opacity-100"}`} >
                                     {Icon && <Icon className="w-4 h-4" />}
                                     <span className="font-medium truncate overflow-hidden whitespace-nowrap min-w-[150px] max-w-[150px]">
