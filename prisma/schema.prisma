@@ -17,6 +17,7 @@ datasource db {
 model Page {
   id        String   @id @default(ulid()) @db.VarChar(26)
   title     String   @db.VarChar(255)
+  icon      String   @db.VarChar(255)
   notes     Note[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

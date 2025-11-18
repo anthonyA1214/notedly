@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { montserrat } from "@/app/config/fonts";
 import "@/app/globals.css";
-import NavBar from "@/components/landing/navbar";
+import TopNav from "@/components/landing/topnav";
 import Footer from "@/components/landing/footer";
 
 export const metadata: Metadata = {
@@ -18,8 +18,10 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${montserrat.className} antialiased bg-[#F2F3F5] min-h-screen`}>
-                <NavBar />
-                {children}
+                <TopNav />
+                <main>
+                    {children}
+                </main>
                 <Footer />
             </body>
         </html>
