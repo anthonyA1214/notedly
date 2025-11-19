@@ -1,12 +1,9 @@
 import { PrismaClient } from "@/lib/generated/prisma/client";
-import { pages } from "@/prisma/data/pages";
+import { pages } from "@/lib/data/pages";
 
 const prisma = new PrismaClient();
 
 async function main() {
-    await prisma.note.deleteMany();
-    await prisma.page.deleteMany();
-
     for (const page of pages) {
         await prisma.page.create({
             data: page,

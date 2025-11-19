@@ -1,9 +1,12 @@
+-- CreateEnum
+CREATE TYPE "Category" AS ENUM ('general', 'work', 'personal', 'ideas', 'tasks', 'shopping', 'health', 'travel', 'education', 'entertainment', 'reminders', 'events', 'music', 'messages', 'passwords');
+
 -- CreateTable
 CREATE TABLE "Page" (
     "id" VARCHAR(26) NOT NULL,
     "title" VARCHAR(255) NOT NULL,
     "slug" VARCHAR(255) NOT NULL,
-    "icon" VARCHAR(255) NOT NULL,
+    "category" "Category" NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -15,6 +18,7 @@ CREATE TABLE "Note" (
     "id" VARCHAR(26) NOT NULL,
     "pageId" VARCHAR(26) NOT NULL,
     "title" VARCHAR(255) NOT NULL,
+    "category" "Category" NOT NULL,
     "content" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,

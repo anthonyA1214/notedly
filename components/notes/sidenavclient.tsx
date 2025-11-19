@@ -1,6 +1,6 @@
 "use client";
 
-import { StickyNote, Check, Plus, Pencil, Megaphone, Hash } from "lucide-react"
+import { categoryIconsMap } from "@/lib/data/categoryIcons";
 import { useState } from "react";
 import Link from 'next/link';
 import { ItemsActionDropdown } from "@/components/notes/itemsactiondropdown";
@@ -8,28 +8,19 @@ import {
     SidebarMenuItem,
     SidebarMenuButton,
 } from "@/components/ui/sidebar";
-import { SideNavItem } from "@/types/navigation";
+import { SideNavItem } from "@/lib/types/navigation";
 
 interface SideNavClientProps {
     items: SideNavItem[];
 }
 
-const iconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
-    StickyNote: StickyNote,
-    Check: Check,
-    Plus: Plus,
-    Pencil: Pencil,
-    Megaphone: Megaphone,
-    Hash: Hash,
-};
-
 export default function SideNavClient({ items }: SideNavClientProps) {
     const [activeItemId, setActiveItemId] = useState<string | null>(null);
-
+    
     return (
         <>
             {items.map((item) => {
-                const Icon = iconMap[item.iconName];
+                const Icon = categoryIconsMap[item.iconName];
                 return (
                     <SidebarMenuItem key={item.title}>
                         <SidebarMenuButton asChild className="py-5">

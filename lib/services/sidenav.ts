@@ -6,7 +6,7 @@ export async function getSideNavItems() {
             id: true,
             title: true,
             slug: true,
-            icon: true,
+            category: true,
         },
         orderBy: { createdAt: "asc" }
     })
@@ -15,6 +15,6 @@ export async function getSideNavItems() {
         id: page.id,
         title: page.title,
         slug: page.slug,
-        iconName: page.icon,
+        iconName: page.category,
     }));
 }
