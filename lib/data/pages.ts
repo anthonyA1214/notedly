@@ -17,6 +17,81 @@ export const pages = [
                     content: "Monday: Chest & Triceps\nWednesday: Back & Biceps\nFriday: Legs",
                     category: Category.health,
                 },
+                {
+                    title: "Read Later",
+                    content: "- Atomic Habits\n- Clean Code\n- The Pragmatic Programmer",
+                    category: Category.education,
+                },
+                {
+                    title: "Project Ideas",
+                    content: "- Build a personal dashboard\n- AI-powered notes search\n- Expense tracker mobile app",
+                    category: Category.ideas,
+                },
+                {
+                    title: "Birthday Gift Ideas",
+                    content: "- Headphones\n- Custom mug\n- Hoodie\n- Mechanical keyboard",
+                    category: Category.events,
+                },
+                {
+                    title: "Work Tasks",
+                    content: "• Update project documentation\n• Fix login bug\n• Prepare sprint report",
+                    category: Category.work,
+                },
+                {
+                    title: "Travel Packing List",
+                    content: "- Passport\n- Clothes\n- Charger\n- Toiletries\n- Power bank",
+                    category: Category.travel,
+                },
+                {
+                    title: "Movies To Watch",
+                    content: "- Dune 2\n- Oppenheimer\n- The Batman\n- Whiplash",
+                    category: Category.entertainment,
+                },
+                {
+                    title: "Music Playlist",
+                    content: "- NIKI – Take a Chance With Me\n- Keshi – Limbo\n- Joji – Glimpse of Us",
+                    category: Category.music,
+                },
+                {
+                    title: "Reminders",
+                    content: "- Pay electricity bill\n- Renew domain\n- Water the plants",
+                    category: Category.reminders,
+                },
+                {
+                    title: "Important Passwords",
+                    content: "Email: ********\nGitHub: ********\nBank App: ********",
+                    category: Category.passwords,
+                },
+                {
+                    title: "Shopping List 2",
+                    content: "- Shampoo\n- Soap\n- Toothpaste\n- Bottled water",
+                    category: Category.shopping,
+                },
+                {
+                    title: "Meal Prep Plan",
+                    content: "Mon: Pasta\nWed: Salmon bowl\nFri: Chicken rice\nSun: Stir fry",
+                    category: Category.health,
+                },
+                {
+                    title: "Event Planning",
+                    content: "• Venue: TBD\n• Guest list: 20 people\n• Catering options: 3\n• Theme ideas: minimalist",
+                    category: Category.events,
+                },
+                {
+                    title: "Work Meeting Notes",
+                    content: "- Q1 goals alignment\n- Timeline adjustment\n- Assign new tasks to dev team",
+                    category: Category.work,
+                },
+                {
+                    title: "Personal Thoughts",
+                    content: "Just trying to stay consistent every day. 1% better rule.",
+                    category: Category.personal,
+                },
+                {
+                    title: "Quick Messages",
+                    content: "Call mom tonight\nSend file to John\nReply to HR",
+                    category: Category.messages,
+                },                
             ],
         },
     },

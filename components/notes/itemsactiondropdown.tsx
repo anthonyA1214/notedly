@@ -26,7 +26,10 @@ export function ItemsActionDropdown({
                 <Button 
                     variant="ghost"
                     size="icon"
-                    className={`transition-none ${className} focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0`}
+                    className={`transition-none ${className} 
+                    hover:bg-transparent 
+                    focus:outline-none focus:ring-0 
+                    focus-visible:outline-none focus-visible:ring-0 hover:text-[#A590DB]`}
                     onClick={(e) => e.stopPropagation() }
                 >
                     <Ellipsis className="w-4 h-4"/>

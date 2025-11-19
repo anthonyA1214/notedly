@@ -16,13 +16,14 @@ import {
 } from "@/components/ui/sidebar";
 
 import SideNavClient from "@/components/notes/sidenavclient";
+import { CreateNewPageDialog } from "@/components/notes/dialog";
+import { Button } from "@/components/ui/button";
 
-// Menu items.dx* 
 export async function SideNav({ className }: { className?: string } ) {
     const items = await getSideNavItems();
     
     return (
-        <Sidebar variant="inset" collapsible="none" className={`border-r ${className}`}>
+        <Sidebar variant="inset" collapsible="none" className={`border-r ${className} px-0.5`}>
             <SidebarHeader className="py-6">
                 <Link href="/" className="flex items-center gap-2">
                     <Image 
@@ -47,16 +48,18 @@ export async function SideNav({ className }: { className?: string } ) {
             <SidebarFooter>
                 <SidebarMenu>
                     <SidebarMenuItem>
-                        <SidebarMenuButton asChild className="py-5">
-                        <Link href="#" className="flex items-center justify-between group">
-                            <div className="flex items-center gap-3 text-lg opacity-50 group-hover:opacity-100">
-                                <Plus className="w-4 h-4"/>
-                                <span className="font-medium truncate overflow-hidden whitespace-nowrap min-w-[150px] max-w-[150px]">
-                                    New Page
-                                </span>
-                            </div>
-                        </Link>
-                        </SidebarMenuButton>
+                        <CreateNewPageDialog>
+                            <SidebarMenuButton asChild className="py-5 hover:bg-[#E6E8EB] active:bg-[#E6E8EB]">
+                                <Button className="flex items-center justify-between bg-transparent hover:bg-[#E6E8EB] active:bg-[#E6E8EB]">
+                                    <div className="flex items-center gap-3 text-lg text-black">
+                                        <Plus className="w-4 h-4"/>
+                                        <span className="font-medium truncate overflow-hidden whitespace-nowrap min-w-[150px] max-w-[150px]">
+                                            New Page
+                                        </span>
+                                    </div>
+                                </Button>
+                            </SidebarMenuButton>
+                        </CreateNewPageDialog>
                     </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarFooter>
