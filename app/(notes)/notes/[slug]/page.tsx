@@ -1,6 +1,6 @@
 import prisma from '@/lib/prisma'
 import { ScrollArea } from "@/components/ui/scroll-area"
-import NoteCard from '@/components/notes/note-card';
+import NotesList from '@/components/notes/noteslist';
 
 export default async function NotesPage({
     params
@@ -15,7 +15,7 @@ export default async function NotesPage({
     if (!page) {
         return <div>not found</div>
     }
-
+    
     return (
         <div className="flex flex-col h-full w-full items-center p-6 gap-8">
             <div className="flex w-full items-center justify-between">
@@ -27,9 +27,7 @@ export default async function NotesPage({
             <div className="flex flex-col w-full overflow-hidden">
                 <ScrollArea className="h-full w-full px-4">
                     <div className="flex flex-col gap-4 p-1">
-                        {page.notes.map(note => (
-                            <NoteCard key={note.id} title={note.title} content={note.content} category={note.category} />
-                        ))}
+                        {<NotesList notes={page.notes} />}
                     </div>
                 </ScrollArea>
             </div>

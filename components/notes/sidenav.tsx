@@ -1,7 +1,7 @@
 import { Plus } from "lucide-react"
 import Image from 'next/image';
 import Link from 'next/link';
-import { getSideNavItems } from "@/lib/services/sidenav";
+import { getPageItems } from "@/lib/services/sidenav";
 import {
     Sidebar,
     SidebarContent,
@@ -15,12 +15,12 @@ import {
     SidebarMenuItem,
 } from "@/components/ui/sidebar";
 
-import SideNavClient from "@/components/notes/sidenavclient";
+import PageItemsList from "@/components/notes/pageitemslist";
 import { CreateNewPageDialog } from "@/components/notes/dialog";
 import { Button } from "@/components/ui/button";
 
 export async function SideNav({ className }: { className?: string } ) {
-    const items = await getSideNavItems();
+    const items = await getPageItems();
     
     return (
         <Sidebar variant="inset" collapsible="none" className={`border-r ${className} px-0.5`}>
@@ -40,7 +40,7 @@ export async function SideNav({ className }: { className?: string } ) {
                     <SidebarGroupLabel>WORKSPACE</SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu className="space-y-1">
-                            <SideNavClient items={items} />
+                            <PageItemsList items={items} />
                         </SidebarMenu>
                     </SidebarGroupContent>
                 </SidebarGroup>

@@ -9,14 +9,14 @@ import { Button } from "@/components/ui/button";
 
 interface ItemsActionDropdownProps {
     onOpenChange?: (isOpen: boolean) => void;
-    onRename?: () => void;
+    onEdit?: () => void;
     onDelete?: () => void;
     className?: string;
 }
 
 export function ItemsActionDropdown({
     onOpenChange,
-    onRename,
+    onEdit,
     onDelete,
     className,
 }: ItemsActionDropdownProps) {
@@ -36,8 +36,19 @@ export function ItemsActionDropdown({
                 </Button>   
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-40" align="start">
-                <DropdownMenuItem onClick={(e) => { e.stopPropagation(); onRename?.();} }>Rename</DropdownMenuItem>
-                <DropdownMenuItem onClick={(e) => { e.stopPropagation(); onDelete?.();} } className="text-destructive">Delete</DropdownMenuItem>
+                <DropdownMenuItem onClick={(e) => {
+                    e.stopPropagation();
+                    if (onEdit) onEdit();
+                } }>
+                    Edit Page
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={(e) => {
+                    e.stopPropagation();
+                    if (onDelete) onDelete();
+                } } 
+                className="text-destructive">
+                    Delete Page
+                </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
     )

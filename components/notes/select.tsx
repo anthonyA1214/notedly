@@ -9,12 +9,12 @@ import {
 } from "@/components/ui/select"
 import { getCategoryItems } from "@/lib/data/categoryItems"
 
-export function NoteCategorySelect() {
+export function NoteCategorySelect({ defaultValue: value }: { defaultValue?: string }) {
     const items = getCategoryItems();
     const firstItem = items[0]?.value;
 
     return (
-        <Select defaultValue={firstItem}>
+        <Select defaultValue={value ?? firstItem}>
             <SelectTrigger className="w-full">
                 <SelectValue placeholder="Select a category" />
             </SelectTrigger>

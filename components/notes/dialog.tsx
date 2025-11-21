@@ -9,9 +9,19 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button";
 import { NoteCategorySelect } from "@/components/notes/select";
+import { 
+    EditNoteDialogProps, 
+    DeleteNoteDialogProps,
+} from "@/lib/types/notes";
+
+import {
+    EditPageDialogProps,
+    DeletePageDialogProps,
+} from "@/lib/types/pages";
 
 export function CreateNewNoteDialog({
     children,
@@ -40,7 +50,7 @@ export function CreateNewNoteDialog({
 
                     <div className="grid gap-2">
                         <Label htmlFor="note-content">Content</Label>
-                        <Input id="note-content" name="note-content" placeholder="Enter note content" />
+                        <Textarea id="note-content" name="note-content" placeholder="Enter note content" />
                     </div>
                 </div>
 
@@ -60,12 +70,10 @@ export function CreateNewNoteDialog({
     )
 }
 
-export function EditNoteDialog({
-    children
-}: Readonly<{children: React.ReactNode}>) {
+export function EditNoteDialog({ open, setOpen, note }: EditNoteDialogProps) {
     return (
-        <Dialog>
-            <DialogTrigger asChild>{children}</DialogTrigger>
+        <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger asChild></DialogTrigger>
             <DialogContent className="sm:max-w-lg">
                 <DialogHeader>
                     <DialogTitle>Edit Note</DialogTitle>
@@ -77,17 +85,17 @@ export function EditNoteDialog({
                 <div className="grid gap-4 py-4">
                     <div className="grid gap-2">
                         <Label htmlFor="note-title">Title</Label>
-                        <Input id="note-title" name="note-title" placeholder="Enter note title" />
+                        <Input id="note-title" name="note-title" placeholder="Enter note title" defaultValue={note?.title} />
                     </div>
 
                     <div className="grid gap-2">
                         <Label htmlFor="note-category">Category</Label>
-                        <NoteCategorySelect />
+                        <NoteCategorySelect defaultValue={note?.category} />
                     </div>
 
                     <div className="grid gap-2">
                         <Label htmlFor="note-content">Content</Label>
-                        <Input id="note-content" name="note-content" placeholder="Enter note content" />
+                        <Textarea id="note-content" name="note-content" placeholder="Enter note content" defaultValue={note?.content} />
                     </div>
                 </div>
 
@@ -107,7 +115,35 @@ export function EditNoteDialog({
     )
 }
 
-// CREATE NEW
+export function DeleteNoteDialog({ open, setOpen, note }: DeleteNoteDialogProps) {
+    return (
+        <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger asChild></DialogTrigger>
+            <DialogContent className="sm:max-w-lg">
+                <DialogHeader>
+                    <DialogTitle>Delete Note</DialogTitle>
+                    <DialogDescription>
+                        Are you sure you want to delete this note? This action cannot be undone. This will delete the note titled &quot;{note?.title}&quot;.
+                    </DialogDescription>
+                </DialogHeader>
+
+                <DialogFooter>
+                    <DialogClose asChild>
+                        <Button variant="outline">Cancel</Button>
+                    </DialogClose>
+                    <Button
+                        type="submit"
+                        className="bg-red-500 hover:bg-red-600 active:bg-red-700"
+                    >
+                        Delete Note
+                    </Button>
+                </DialogFooter>
+            </DialogContent>
+        </Dialog>
+    )
+}
+
+// PAGES
 
 export function CreateNewPageDialog({
     children,
@@ -144,6 +180,74 @@ export function CreateNewPageDialog({
                         className="bg-[#A590DB] hover:bg-[#9582C5] active:bg-[#8473AF]"
                     >
                         Create Page
+                    </Button>
+                </DialogFooter>
+            </DialogContent>
+        </Dialog>
+    )
+}
+
+export function EditPageDialog({ open, setOpen, item }: EditPageDialogProps) {
+    return (
+        <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger asChild></DialogTrigger>
+            <DialogContent className="sm:max-w-lg">
+                <DialogHeader>
+                    <DialogTitle>Edit Page</DialogTitle>
+                    <DialogDescription>
+                        Fill in the details below to edit the page.
+                    </DialogDescription>
+                </DialogHeader>
+
+                <div className="grid gap-4 py-4">
+                    <div className="grid gap-2">
+                        <Label htmlFor="note-title">Title</Label>
+                        <Input id="note-title" name="note-title" placeholder="Enter note title" defaultValue={item?.title} />
+                    </div>
+
+                    <div className="grid gap-2">
+                        <Label htmlFor="note-category">Category</Label>
+                        <NoteCategorySelect defaultValue={item?.category} />
+                    </div>
+                </div>
+
+                <DialogFooter>
+                    <DialogClose asChild>
+                        <Button variant="outline">Cancel</Button>
+                    </DialogClose>
+                    <Button
+                        type="submit"
+                        className="bg-[#A590DB] hover:bg-[#9582C5] active:bg-[#8473AF]"
+                    >
+                        Edit Page
+                    </Button>
+                </DialogFooter>
+            </DialogContent>
+        </Dialog>
+    )
+}
+
+export function DeletePageDialog({ open, setOpen, item }: DeletePageDialogProps) {
+    return (
+        <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger asChild></DialogTrigger>
+            <DialogContent className="sm:max-w-lg">
+                <DialogHeader>
+                    <DialogTitle>Delete Note</DialogTitle>
+                    <DialogDescription>
+                        Are you sure you want to delete this page? This action cannot be undone. This will delete the page titled &quot;{item?.title}&quot;.
+                    </DialogDescription>
+                </DialogHeader>
+
+                <DialogFooter>
+                    <DialogClose asChild>
+                        <Button variant="outline">Cancel</Button>
+                    </DialogClose>
+                    <Button
+                        type="submit"
+                        className="bg-red-500 hover:bg-red-600 active:bg-red-700"
+                    >
+                        Delete Page
                     </Button>
                 </DialogFooter>
             </DialogContent>

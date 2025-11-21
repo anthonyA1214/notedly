@@ -1,6 +1,6 @@
 import prisma from '@/lib/prisma'
 
-export async function getSideNavItems() {
+export async function getPageItems() {
     const pages = await prisma.page.findMany({
         select: {
             id: true,
@@ -15,6 +15,6 @@ export async function getSideNavItems() {
         id: page.id,
         title: page.title,
         slug: page.slug,
-        iconName: page.category,
+        category: page.category,
     }));
 }

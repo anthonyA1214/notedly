@@ -8,26 +8,39 @@ import {
     SidebarMenuItem,
     SidebarMenuButton,
 } from "@/components/ui/sidebar";
-import { SideNavItem } from "@/lib/types/navigation";
+import { PageItemsData, PageItemsListProps } from "@/lib/types/pages";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { EditPageDialog, DeletePageDialog } from "@/components/notes/dialog"
 
-interface SideNavClientProps {
-    items: SideNavItem[];
-}
-
-export default function SideNavClient({ items }: SideNavClientProps) {
+export default function PageItemsList({ items }: PageItemsListProps) {
     const [activeItemId, setActiveItemId] = useState<string | null>(null);
     const pathname = usePathname();
+
+    const [openEdit, setOpenEdit] = useState(false);
+    const [selectedEditPageItem, setSelectedEditPageItem] = useState<PageItemsData | null>(null);
+
+    const onEdit = (item: PageItemsData) => {
+        setSelectedEditPageItem(item);
+        setOpenEdit(true);
+    }
+
+    const [openDelete, setOpenDelete] = useState(false);
+    const [selectedDeletePageItem, setSelectedDeletePageItem] = useState<PageItemsData | null>(null);
+
+    const onDelete = (item: PageItemsData) => {
+        setSelectedDeletePageItem(item);
+        setOpenDelete(true);
+    }
 
     return (
         <>
             {items.map((item) => {
-                const Icon = categoryIconsMap[item.iconName];
+                const Icon = categoryIconsMap[item.category];
                 const href = `/notes/${item.slug}`;
                 const isActive = pathname === href;
                 return (
-                    <SidebarMenuItem key={item.title}>
+                    <SidebarMenuItem key={item.id}>
                         <SidebarMenuButton asChild className={cn(
                             "py-5",
                             isActive ? "bg-white hover:bg-white active:bg-white shadow-md"
@@ -53,8 +66,8 @@ export default function SideNavClient({ items }: SideNavClientProps) {
                                             setActiveItemId(null);    // clear active when closed
                                         }
                                     }}               
-                                    onRename={() => console.log(`Rename ${item.title}`)}
-                                    onDelete={() => console.log(`Delete ${item.title}`)}
+                                    onEdit={() => onEdit(item)}
+                                    onDelete={() => onDelete(item)}
                                     className={activeItemId === item.id ? "opacity-100 text-[#A590DB]" : "opacity-0 group-hover:opacity-100"}
                                 />                       
                             </Link>
@@ -62,6 +75,22 @@ export default function SideNavClient({ items }: SideNavClientProps) {
                     </SidebarMenuItem>
                 )
             })}
+
+            {selectedEditPageItem && (
+                <EditPageDialog 
+                    open={openEdit}
+                    setOpen={setOpenEdit}
+                    item={selectedEditPageItem}
+                />
+            )}
+
+            {selectedDeletePageItem && (
+                <DeletePageDialog 
+                    open={openDelete}
+                    setOpen={setOpenDelete}
+                    item={selectedDeletePageItem}
+                />
+            )}
         </>
     )
 }
