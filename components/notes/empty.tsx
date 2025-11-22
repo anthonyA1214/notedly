@@ -1,35 +1,61 @@
-// import { Button } from "@/components/ui/button"
 import {
     Empty,
-    // EmptyContent,
     EmptyDescription,
     EmptyHeader,
     EmptyMedia,
     EmptyTitle,
 } from "@/components/ui/empty"
-import { Frown } from "lucide-react"
-// import { CreateNewPageDialog } from "@/components/notes/dialog"
+import { FileQuestion, SearchX, StickyNote } from "lucide-react"
 
 export function EmptyPageState() {
     return (
         <Empty>
             <EmptyHeader>
                 <EmptyMedia variant="icon">
-                <div className="rounded-xl bg-[#A590DB]/10 p-4 flex items-center justify-center">
-                    <Frown className="text-[#A590DB]" />
-                </div>
+                    <div className="rounded-xl bg-[#A590DB]/10 p-4 flex items-center justify-center">
+                        <FileQuestion className="text-[#A590DB]" size={32} />
+                    </div>
                 </EmptyMedia>
-                <EmptyTitle>No page selected yet</EmptyTitle>
+                <EmptyTitle>No pages yet</EmptyTitle>
                 <EmptyDescription>
-                    Please select a page from the sidebar or create a new one.
+                    You haven’t created any pages yet. Start by creating a new page to add notes to.
                 </EmptyDescription>
-                {/* <EmptyContent>
-                    <CreateNewPageDialog>
-                        <Button className="bg-[#A590DB] hover:bg-[#9582C5] active:bg-[#8473AF]">
-                            Create New Page
-                        </Button>
-                    </CreateNewPageDialog>
-                </EmptyContent> */}
+            </EmptyHeader>
+        </Empty>
+    )
+}
+
+export function EmptyPageNotFound() {
+    return (
+        <Empty>
+            <EmptyHeader>
+                <EmptyMedia variant="icon">
+                    <div className="rounded-xl bg-[#F87171]/10 p-4 flex items-center justify-center">
+                        <SearchX className="text-[#F87171]" size={32} />
+                    </div>
+                </EmptyMedia>
+                <EmptyTitle>Page not found</EmptyTitle>
+                <EmptyDescription>
+                    This page doesn&apos;t exist. Double-check the URL or pick a different one.
+                </EmptyDescription>
+            </EmptyHeader>
+        </Empty>
+    )
+}
+
+export function EmptyNotesState() {
+    return (
+        <Empty>
+            <EmptyHeader>
+                <EmptyMedia variant="icon">
+                    <div className="rounded-xl bg-[#A590DB]/10 p-4 flex items-center justify-center">
+                        <StickyNote className="text-[#A590DB]" size={32} />
+                    </div>
+                </EmptyMedia>
+                <EmptyTitle>No notes yet</EmptyTitle>
+                <EmptyDescription>
+                    This page has no notes so far. Start adding one!
+                </EmptyDescription>
             </EmptyHeader>
         </Empty>
     )

@@ -8,6 +8,7 @@ import { getGreeting } from "@/lib/services/greetings";
 import QuoteCard from "@/components/notes/quotecard";
 import { CreateNewNoteDialog } from "@/components/notes/dialog";
 import FloatingActionButton from "@/components/notes/floatingactionbutton"
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 export default async function NotesLayout({
     children,
@@ -28,29 +29,32 @@ export default async function NotesLayout({
                         {/* TOP NAVIGATION */}
                         <TopNav />
 
-                        <div className="flex flex-col md:flex-row flex-1 gap-8 min-h-0">
+                        <div className="flex flex-col md:flex-row flex-1 gap-8 min-h-0 pt-16 md:pt-0">
 
-                            <aside className="order-1 md:order-2 flex flex-1 flex-col items-center p-6">
-                                <div className="flex flex-col gap-12 w-full max-w-3xl">
-                                    {/* Image */}
-                                    <div className="flex justify-center">
-                                        <Image
-                                            src="/undraw_typing-code.svg"
-                                            alt="Typing Code Illustration"
-                                            width={550}   // konting bawas lang
-                                            height={415}  // maintain aspect ratio
-                                        />
+                            <aside className="order-1 md:order-2 flex flex-1 flex-col p-6">
+                                <ScrollArea className="w-full h-full px-4">
+                                    <div className="flex flex-col items-center gap-8 md:gap-12 w-full max-w-3xl py-1 mx-auto">
+                                        {/* Image */}
+                                        <div className="flex justify-center">
+                                            <Image
+                                                src="/undraw_typing-code.svg"
+                                                alt="Typing Code Illustration"
+                                                width={550}
+                                                height={415}
+                                                className="w-full h-auto max-w-[350px] sm:max-w-[450px] md:max-w-[550px]"
+                                            />
+                                        </div>
+
+                                        {/* Text + Quote */}
+                                        <div className="flex flex-col w-full gap-8">
+                                            <h1 className="font-semibold text-xl sm:text-2xl md:text-3xl wrap-break-word">
+                                                {greeting}
+                                            </h1>
+
+                                            <QuoteCard quote={quote} />
+                                        </div>
                                     </div>
-
-                                    {/* Text + Quote */}
-                                    <div className="flex flex-col w-full gap-8">
-                                        <h1 className="font-semibold text-xl sm:text-2xl md:text-3xl wrap-break-word">
-                                            {greeting}
-                                        </h1>
-
-                                        <QuoteCard quote={quote} />
-                                    </div>
-                                </div>
+                                </ScrollArea>  
                             </aside>
 
 

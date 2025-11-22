@@ -91,7 +91,7 @@ export const pages = [
                     title: "Quick Messages",
                     content: "Call mom tonight\nSend file to John\nReply to HR",
                     category: Category.messages,
-                },                
+                },
             ],
         },
     },
@@ -133,4 +133,79 @@ export const pages = [
             ],
         },
     },
+    {
+        title: "Project Dashboard",
+        slug: "project-dashboard",
+        category: Category.work,
+    },
+    {
+        title: "Morning Routine",
+        slug: "morning-routine",
+        category: Category.health,
+    },
+    {
+        title: "Gift Ideas",
+        slug: "gift-ideas",
+        category: Category.shopping,
+    },
+    {
+        title: "Workout Tracker",
+        slug: "workout-tracker",
+        category: Category.health,
+    },
+    {
+        title: "Travel Plans 2025",
+        slug: "travel-plans-2025",
+        category: Category.travel,
+    },
+    {
+        title: "Study Notes",
+        slug: "study-notes",
+        category: Category.education,
+    },
+    {
+        title: "Bucket List",
+        slug: "bucket-list",
+        category: Category.personal,
+    },
+    {
+        title: "Business Ideas",
+        slug: "business-ideas",
+        category: Category.ideas,
+    },
+    {
+        title: "Weekly Tasks",
+        slug: "weekly-tasks",
+        category: Category.tasks,
+    },
+    {
+        title: "Movie Watchlist",
+        slug: "movie-watchlist",
+        category: Category.entertainment,
+    },
+    {
+        title: "Meeting Reminders",
+        slug: "meeting-reminders",
+        category: Category.reminders,
+    },
+    {
+        title: "Event Planner",
+        slug: "event-planner",
+        category: Category.events,
+    },
+    {
+        title: "Favorite Songs",
+        slug: "favorite-songs",
+        category: Category.music,
+    },
+    {
+        title: "Important Messages",
+        slug: "important-messages",
+        category: Category.messages,
+    },
+    {
+        title: "Secure Vault",
+        slug: "secure-vault",
+        category: Category.passwords,
+    }
 ];

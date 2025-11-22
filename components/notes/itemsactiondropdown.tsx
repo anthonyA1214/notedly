@@ -6,12 +6,14 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Ellipsis } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 interface ItemsActionDropdownProps {
     onOpenChange?: (isOpen: boolean) => void;
     onEdit?: () => void;
     onDelete?: () => void;
     className?: string;
+    isOpen?: boolean;
 }
 
 export function ItemsActionDropdown({
@@ -19,6 +21,7 @@ export function ItemsActionDropdown({
     onEdit,
     onDelete,
     className,
+    isOpen,
 }: ItemsActionDropdownProps) {
     return (
         <DropdownMenu onOpenChange={onOpenChange}>
@@ -26,10 +29,14 @@ export function ItemsActionDropdown({
                 <Button 
                     variant="ghost"
                     size="icon"
-                    className={`transition-none ${className} 
-                    hover:bg-transparent 
-                    focus:outline-none focus:ring-0 
-                    focus-visible:outline-none focus-visible:ring-0 hover:text-[#A590DB]`}
+                    className={cn(
+                        "transition-none",
+                        "hover:bg-transparent",
+                        "focus:outline-none focus:ring-0",
+                        "focus-visible:outline-none focus-visible:ring-0 hover:text-[#A590DB]",
+                        isOpen && "text-[#A590DB]",
+                        className
+                    )}
                     onClick={(e) => e.stopPropagation() }
                 >
                     <Ellipsis className="w-4 h-4"/>

@@ -50,7 +50,7 @@ export function CreateNewNoteDialog({
 
                     <div className="grid gap-2">
                         <Label htmlFor="note-content">Content</Label>
-                        <Textarea id="note-content" name="note-content" placeholder="Enter note content" />
+                        <Textarea className="max-h-40" id="note-content" name="note-content" placeholder="Enter note content" />
                     </div>
                 </div>
 
@@ -95,7 +95,7 @@ export function EditNoteDialog({ open, setOpen, note }: EditNoteDialogProps) {
 
                     <div className="grid gap-2">
                         <Label htmlFor="note-content">Content</Label>
-                        <Textarea id="note-content" name="note-content" placeholder="Enter note content" defaultValue={note?.content} />
+                        <Textarea className="max-h-40" id="note-content" name="note-content" placeholder="Enter note content" defaultValue={note?.content} />
                     </div>
                 </div>
 

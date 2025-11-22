@@ -4,16 +4,15 @@ export default function QuoteCard({ quote }: { quote: Quote }) {
     return (
         <div 
         className="
-        flex flex-col gap-4 bg-white rounded-lg p-6 shadow-md 
+        flex flex-col gap-3 md:gap-4 bg-white rounded-2xl p-4 md:p-6 shadow-md 
         w-full
-        min-h-[120px] sm:min-h-[150px] md:min-h-[175px]
-        max-h-[180px] md:max-h-[220px]"
+        min-h-[100px] sm:min-h-[120px] md:min-h-[150px]"
         >
-            <blockquote className="italic text-base sm:text-lg md:text-xl line-clamp-3">
-                “{quote.content}”
+            <blockquote className="italic text-sm sm:text-base md:text-lg lg:text-xl">
+                &quot;{quote.content}&quot;
             </blockquote>
 
-            <p className="text-sm sm:text-base md:text-lg opacity-50 mt-auto">
+            <p className="text-xs sm:text-sm md:text-base opacity-50 mt-auto">
                 — {quote.author}
             </p>
         </div>

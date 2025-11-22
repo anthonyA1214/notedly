@@ -1,20 +1,28 @@
 import prisma from '@/lib/prisma'
 import { ScrollArea } from "@/components/ui/scroll-area"
 import NotesList from '@/components/notes/noteslist';
+import { EmptyPageNotFound, EmptyNotesState } from '@/components/notes/empty';
+import { redirect } from 'next/navigation';
 
 export default async function NotesPage({
     params
 }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
 
+    const pagesCount = await prisma.page.count();
+
+    if (pagesCount === 0) {
+        return redirect('/notes');
+    }
+
     const page = await prisma.page.findUnique({
         where: { slug },
         include: { notes: true }
     })
 
-    if (!page) {
-        return <div>not found</div>
-    }
+    if (!page) return <EmptyPageNotFound />;
+    
+    if (page.notes.length === 0) return <EmptyNotesState />;
     
     return (
         <div className="flex flex-col h-full w-full items-center p-6 gap-8">
@@ -26,7 +34,7 @@ export default async function NotesPage({
 
             <div className="flex flex-col w-full overflow-hidden">
                 <ScrollArea className="h-full w-full px-4">
-                    <div className="flex flex-col gap-4 p-1">
+                    <div className="flex flex-col gap-4 py-1">
                         {<NotesList notes={page.notes} />}
                     </div>
                 </ScrollArea>

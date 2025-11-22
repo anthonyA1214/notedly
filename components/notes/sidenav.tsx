@@ -18,12 +18,13 @@ import {
 import PageItemsList from "@/components/notes/pageitemslist";
 import { CreateNewPageDialog } from "@/components/notes/dialog";
 import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 export async function SideNav({ className }: { className?: string } ) {
     const items = await getPageItems();
     
     return (
-        <Sidebar variant="inset" collapsible="none" className={`border-r ${className} px-0.5`}>
+        <Sidebar collapsible="offcanvas" className={`border-r ${className} p-0`}>
             <SidebarHeader className="py-6">
                 <Link href="/" className="flex items-center gap-2">
                     <Image 
@@ -32,25 +33,27 @@ export async function SideNav({ className }: { className?: string } ) {
                         width={32}
                         height={32}
                     />
-                    <h1 className="font-figtree font-extrabold text-lg hidden md:block">Notedly</h1>
+                    <h1 className="font-figtree font-extrabold text-lg">Notedly</h1>
                 </Link>
             </SidebarHeader>
-            <SidebarContent className="p-0">
+            <SidebarContent>
                 <SidebarGroup>
                     <SidebarGroupLabel>WORKSPACE</SidebarGroupLabel>
-                    <SidebarGroupContent>
-                        <SidebarMenu className="space-y-1">
-                            <PageItemsList items={items} />
-                        </SidebarMenu>
+                    <SidebarGroupContent className="overflow-hidden">
+                        <ScrollArea className="h-[calc(100vh-185px)] px-3">
+                            <SidebarMenu className="space-y-1">
+                                <PageItemsList items={items} /> 
+                            </SidebarMenu>
+                        </ScrollArea>                
                     </SidebarGroupContent>
                 </SidebarGroup>
             </SidebarContent>
-            <SidebarFooter>
+            <SidebarFooter className="border-t">
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <CreateNewPageDialog>
-                            <SidebarMenuButton asChild className="py-5 hover:bg-[#E6E8EB] active:bg-[#E6E8EB]">
-                                <Button className="flex items-center justify-between bg-transparent hover:bg-[#E6E8EB] active:bg-[#E6E8EB]">
+                            <SidebarMenuButton asChild className="py-5 px-3">
+                                <Button className="flex items-center justify-between bg-transparent">
                                     <div className="flex items-center gap-3 text-lg text-black">
                                         <Plus className="w-4 h-4"/>
                                         <span className="font-medium truncate overflow-hidden whitespace-nowrap min-w-[150px] max-w-[150px]">

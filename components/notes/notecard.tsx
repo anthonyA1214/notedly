@@ -25,7 +25,7 @@ export default function NoteCard({ title, content, category, onEdit, onDelete }:
                     <h3 className="font-semibold">{title}</h3>
                 </div>
 
-                <div className="flex gap-2 opacity-0 group-hover:opacity-100">
+                <div className="flex gap-0.5 md:gap-2 md:opacity-0 md:group-hover:opacity-100">
                     <Button 
                         className="bg-transparent text-black/50 hover:bg-black/5 active:bg-black/10"
                         onClick={onEdit}
