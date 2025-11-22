@@ -11,12 +11,31 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+}
+
+enum Category {
+  general
+  work
+  personal
+  ideas
+  tasks
+  shopping
+  health
+  travel
+  education
+  entertainment
+  reminders
+  events
+  music
+  messages
+  passwords
 }
 
 model Page {
   id        String   @id @default(ulid()) @db.VarChar(26)
   title     String   @db.VarChar(255)
+  slug      String   @unique @db.VarChar(255)
+  category  Category
   notes     Note[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -27,7 +46,8 @@ model Note {
   page      Page     @relation(fields: [pageId], references: [id])
   pageId    String   @db.VarChar(26)
   title     String   @db.VarChar(255)
-  content   String
+  category  Category
+  content   String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

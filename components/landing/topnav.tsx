@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from 'lucide-react';
 
-export default function NavBar() {
+export default function TopNav() {
     return (
         <header className="flex justify-center bg-[#FFFFFF] shadow-md">
             <nav className="flex justify-between p-4 container">
@@ -14,10 +14,10 @@ export default function NavBar() {
                         <Image 
                             src="/logo.svg"
                             alt="Notedly Logo"
-                            width={40}
-                            height={40}
+                            width={32}
+                            height={32}
                         />
-                        <h1 className="font-figtree font-extrabold text-lg hidden md:block">Notedly</h1>
+                        <h1 className="font-figtree font-extrabold text-xl hidden md:block">Notedly</h1>
                     </Link>
                     
                     <div className="hidden md:flex items-center gap-6">
