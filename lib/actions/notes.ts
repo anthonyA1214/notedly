@@ -3,8 +3,20 @@
 import prisma from '@/lib/prisma'
 import { NoteFormSchema } from '@/lib/schemas/noteSchema'
 import { $Enums } from '../generated/prisma/client';
+import z from 'zod';
+import { revalidatePath } from 'next/cache';
 
-export async function createNote(formData: FormData) {
+export type State = {
+    errors?: {
+        slug?: string[],
+        title?: string[],
+        content?: string[],
+        category?: string[],
+    } | null;
+    status?: string | null;
+}
+
+export async function createNote(prevState: State, formData: FormData) {
     const parsed = NoteFormSchema.safeParse({
         slug: formData.get("slug"),
         title: formData.get("title"),
@@ -14,30 +26,47 @@ export async function createNote(formData: FormData) {
 
     if (!parsed.success) {
         return {
-            errors: parsed.error.flatten().fieldErrors,
-            message: "Failed to create note.",
+            errors: z.flattenError(parsed.error).fieldErrors,
+            status: "Failed to create note.",
         }
     }
 
     const { slug, title, content, category } = parsed.data;
     
-    const page = await prisma.page.findUnique({
-        where: { slug },
-        select: { id: true },
-    })
+    try {
+        const page = await prisma.page.findUnique({
+            where: { slug },
+            select: { id: true },
+        })
+    
+        if (!page) {
+            return {
+                errors: { slug: ["Page not found."] },
+                status: "error",
+            }
+        }
+    
+        await prisma.note.create({
+            data: {
+                title: title,
+                category: category as $Enums.Category,
+                content: content,
+                pageId: page.id
+            }
+        });
+    
+        revalidatePath(`/notes/${slug}`)
 
-    if (!page) {
         return {
-            errors: { slug: ["Page not found."] },
-            message: "Failed to create note.",
-        }
-    }
+            errors: {},
+            status: "success",
+        };
+    } catch (error) {
+        console.log("Create note failed: ", error)
 
-    await prisma.note.create({
-        data: {
-            title: title,
-            category: category as $Enums.Category,
-            content: content,
-        }
-    });
+        return {
+            errors: { slug: ["An unexpected error occurred."] },
+            status: "error",
+        };
+    }
 }

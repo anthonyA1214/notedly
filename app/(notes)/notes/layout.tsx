@@ -9,6 +9,7 @@ import QuoteCard from "@/components/notes/quotecard";
 import { CreateNewNoteDialog } from "@/components/notes/dialog";
 import FloatingActionButton from "@/components/notes/floatingactionbutton"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { Toaster } from "@/components/ui/sonner"
 
 export default async function NotesLayout({
     children,
@@ -62,6 +63,7 @@ export default async function NotesLayout({
                             <main className="order-2 md:order-1 flex flex-col flex-1 md:max-w-xl shrink-0">
                                 {children}
                             </main>
+                            <Toaster position="top-center" />
                         </div>            
                     </div>
 

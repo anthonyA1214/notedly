@@ -5,7 +5,7 @@ import { Pencil, Trash2 } from "lucide-react";
 interface NoteCardProps {
     id: string,
     title: string,
-    content: string,
+    content: string | null,
     category: string,
     onEdit?: () => void,
     onDelete?: () => void

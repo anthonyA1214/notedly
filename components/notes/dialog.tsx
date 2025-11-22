@@ -23,7 +23,7 @@ import {
     EditPageDialogProps,
     DeletePageDialogProps,
 } from "@/lib/types/pages";
-import CreateNewNoteForm from "@/components/notes/CreateNewNoteForm";
+import CreateNewNoteForm from "@/components/notes/createnewnoteform";
 import { useState } from "react";
 
 // NOTES
