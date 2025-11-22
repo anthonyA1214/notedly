@@ -6,7 +6,7 @@ export interface DialogControlProps {
 export interface NotesData {
     id: string;
     title: string;
-    content: string;
+    content: string | null;
     category: string;
 }
 
@@ -18,7 +18,7 @@ export interface EditNoteDialogProps extends DialogControlProps {
     note: {
         id: string;
         title: string;
-        content: string;
+        content: string | null;
         category: string;
     }
 }

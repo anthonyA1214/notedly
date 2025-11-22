@@ -17,3 +17,7 @@ export function getCategoryItems() {
         { value: "passwords", label: "Passwords" },
     ];
 }
+
+export function getCategoryValues() {
+    return getCategoryItems().map((item) => item.value);
+}

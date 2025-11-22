@@ -1,8 +1,6 @@
 export function getGreeting(): string {
     const hour = new Date().getHours();
 
-    console.log("Current hour:", hour);
-
     const greetings = {
         morning: ["Good morning!", "Top of the morning to you!", "Wishing you a bright morning!", "Rise and shine!", "Morning! Hope you have a great day ahead!"],
         afternoon: ["Good afternoon!", "Hope your day's going well!", "Hello there!", "Wishing you a productive afternoon!", "Afternoon! Keep up the great work!"],

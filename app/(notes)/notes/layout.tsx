@@ -29,7 +29,7 @@ export default async function NotesLayout({
                         {/* TOP NAVIGATION */}
                         <TopNav />
 
-                        <div className="flex flex-col md:flex-row flex-1 gap-8 min-h-0 pt-16 md:pt-0">
+                        <div className="flex flex-col md:flex-row flex-1 min-h-0 pt-16 md:pt-0">
 
                             <aside className="order-1 md:order-2 flex flex-1 flex-col p-6">
                                 <ScrollArea className="w-full h-full px-4">

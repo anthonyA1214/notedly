@@ -19,7 +19,7 @@ CREATE TABLE "Note" (
     "pageId" VARCHAR(26) NOT NULL,
     "title" VARCHAR(255) NOT NULL,
     "category" "Category" NOT NULL,
-    "content" TEXT NOT NULL,
+    "content" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 

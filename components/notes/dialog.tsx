@@ -1,3 +1,5 @@
+"use client";
+
 import {
     Dialog,
     DialogClose,
@@ -17,17 +19,21 @@ import {
     EditNoteDialogProps, 
     DeleteNoteDialogProps,
 } from "@/lib/types/notes";
-
 import {
     EditPageDialogProps,
     DeletePageDialogProps,
 } from "@/lib/types/pages";
+import CreateNewNoteForm from "@/components/notes/CreateNewNoteForm";
+import { useState } from "react";
 
+// NOTES
 export function CreateNewNoteDialog({
     children,
 }: Readonly<{ children: React.ReactNode }>) {
+    const [open, setOpen] = useState(false);
+
     return (
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>{children}</DialogTrigger>
             <DialogContent className="sm:max-w-lg">
                 <DialogHeader>
@@ -36,35 +42,7 @@ export function CreateNewNoteDialog({
                         Fill in the details below to create a new note.
                     </DialogDescription>
                 </DialogHeader>
-
-                <div className="grid gap-4 py-4">
-                    <div className="grid gap-2">
-                        <Label htmlFor="note-title">Title</Label>
-                        <Input id="note-title" name="note-title" placeholder="Enter note title" />
-                    </div>
-
-                    <div className="grid gap-2">
-                        <Label htmlFor="note-category">Category</Label>
-                        <NoteCategorySelect />
-                    </div>
-
-                    <div className="grid gap-2">
-                        <Label htmlFor="note-content">Content</Label>
-                        <Textarea className="max-h-40" id="note-content" name="note-content" placeholder="Enter note content" />
-                    </div>
-                </div>
-
-                <DialogFooter>
-                    <DialogClose asChild>
-                        <Button variant="outline">Cancel</Button>
-                    </DialogClose>
-                    <Button
-                        type="submit"
-                        className="bg-[#A590DB] hover:bg-[#9582C5] active:bg-[#8473AF]"
-                    >
-                        Create Note
-                    </Button>
-                </DialogFooter>
+                <CreateNewNoteForm onSuccess={() => setOpen(false) } />
             </DialogContent>
         </Dialog>
     )
@@ -95,7 +73,7 @@ export function EditNoteDialog({ open, setOpen, note }: EditNoteDialogProps) {
 
                     <div className="grid gap-2">
                         <Label htmlFor="note-content">Content</Label>
-                        <Textarea className="max-h-40" id="note-content" name="note-content" placeholder="Enter note content" defaultValue={note?.content} />
+                        <Textarea className="max-h-40" id="note-content" name="note-content" placeholder="Enter note content" defaultValue={note?.content ?? ""} />
                     </div>
                 </div>
 
