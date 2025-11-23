@@ -11,7 +11,7 @@ import TopNavShadow from "@/components/topnavshadow";
 export default function TopNav() {
     return (
         <>
-            <header className="flex bg-[#F2F3F5] fixed md:sticky h-16 top-0 z-10 transition-shadow duration-200" id="top-nav">
+            <header className="flex bg-[#F2F3F5] fixed w-full md:sticky h-16 top-0 z-10 transition-shadow duration-200" id="top-nav">
                 <nav className="flex w-full justify-between p-4 gap-4 items-center">
                     <SidebarTrigger className="md:hidden" />
                     <InputGroup className="max-w-sm">

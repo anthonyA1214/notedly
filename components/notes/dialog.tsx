@@ -2,18 +2,12 @@
 
 import {
     Dialog,
-    DialogClose,
     DialogContent,
     DialogDescription,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Button } from "@/components/ui/button";
-import { NoteCategorySelect } from "@/components/notes/select";
 import { 
     EditNoteDialogProps, 
     DeleteNoteDialogProps,
@@ -25,6 +19,9 @@ import {
 import CreateNewNoteForm from "@/components/notes/forms/createnewnoteform";
 import EditNoteForm from "@/components/notes/forms/editnoteform";
 import DeleteNoteForm from "@/components/notes/forms/deletenoteform";
+import CreateNewPageForm from "@/components/notes/forms/createnewpageform";
+import EditPageForm from "@/components/notes/forms/editpageform";
+import DeletePageForm from "@/components/notes/forms/deletepageform";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
@@ -91,7 +88,6 @@ export function DeleteNoteDialog({ open, setOpen, note }: DeleteNoteDialogProps)
 }
 
 // PAGES
-
 export function CreateNewPageDialog({
     children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -105,30 +101,7 @@ export function CreateNewPageDialog({
                         Fill in the details below to create a new page. 
                     </DialogDescription>
                 </DialogHeader>
-
-                <div className="grid gap-4 py-4">
-                    <div className="grid gap-2">
-                        <Label htmlFor="page-name">Page Name</Label>
-                        <Input id="page-name" name="page-name" placeholder="Enter page title" />
-                    </div>
-
-                    <div className="grid gap-2">
-                        <Label htmlFor="page-category">Category</Label>
-                        <NoteCategorySelect />
-                    </div>
-                </div>
-
-                <DialogFooter>
-                    <DialogClose asChild>
-                        <Button variant="outline">Cancel</Button>
-                    </DialogClose>
-                    <Button
-                        type="submit"
-                        className="bg-[#A590DB] hover:bg-[#9582C5] active:bg-[#8473AF]"
-                    >
-                        Create Page
-                    </Button>
-                </DialogFooter>
+                <CreateNewPageForm />
             </DialogContent>
         </Dialog>
     )
@@ -146,29 +119,7 @@ export function EditPageDialog({ open, setOpen, item }: EditPageDialogProps) {
                     </DialogDescription>
                 </DialogHeader>
 
-                <div className="grid gap-4 py-4">
-                    <div className="grid gap-2">
-                        <Label htmlFor="note-title">Title</Label>
-                        <Input id="note-title" name="note-title" placeholder="Enter note title" defaultValue={item?.title} />
-                    </div>
-
-                    <div className="grid gap-2">
-                        <Label htmlFor="note-category">Category</Label>
-                        <NoteCategorySelect defaultValue={item?.category} />
-                    </div>
-                </div>
-
-                <DialogFooter>
-                    <DialogClose asChild>
-                        <Button variant="outline">Cancel</Button>
-                    </DialogClose>
-                    <Button
-                        type="submit"
-                        className="bg-[#A590DB] hover:bg-[#9582C5] active:bg-[#8473AF]"
-                    >
-                        Edit Page
-                    </Button>
-                </DialogFooter>
+                <EditPageForm slug={useSlug()} item={item} onSuccess={() => setOpen(false)} />
             </DialogContent>
         </Dialog>
     )
@@ -186,17 +137,7 @@ export function DeletePageDialog({ open, setOpen, item }: DeletePageDialogProps)
                     </DialogDescription>
                 </DialogHeader>
 
-                <DialogFooter>
-                    <DialogClose asChild>
-                        <Button variant="outline">Cancel</Button>
-                    </DialogClose>
-                    <Button
-                        type="submit"
-                        className="bg-red-500 hover:bg-red-600 active:bg-red-700"
-                    >
-                        Delete Page
-                    </Button>
-                </DialogFooter>
+                <DeletePageForm slug={useSlug()} item={item} onSuccess={() => setOpen(false)} />
             </DialogContent>
         </Dialog>
     )

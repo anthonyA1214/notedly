@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, Zap } from "lucide-react";
+import { ArrowRight, Check, Zap } from "lucide-react";
 import {
     Avatar,
     AvatarFallback,
@@ -16,7 +16,7 @@ export default function SectionHero() {
             <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-10 md:gap-16 justify-center">
                 <div className="flex flex-col gap-8">
                     {/* Section Badge */}
-                    <div className="flex items-center text-sm gap-2 bg-[#A590DB]/10 text-[#A590DB] w-fit py-2 px-3 rounded-2xl">
+                    <div className="flex items-center text-sm gap-2 bg-[#A590DB]/10 text-[#A590DB] w-fit py-1.5 px-3 rounded-2xl">
                         <Zap className="w-[1em]"/> 
                         <span>Trusted by 50,000+ users worldwide</span>
                     </div>
@@ -80,15 +80,37 @@ export default function SectionHero() {
                 </div>
 
                 {/* Hero image */}
-                <div className="w-full flex justify-center md:justify-end">
-                    <Image
-                        src="/hero-desktop.png"
-                        alt="Hero"
-                        width={1440}
-                        height={1024}
-                        className="w-full max-w-md md:max-w-none object-cover shadow-2xl rounded-2xl"
-                    />
-                </div>
+                <div className="w-full relative">
+                    <motion.div
+                        className="absolute top-1/2 -left-5 md:-left-10 -translate-y-1/2"
+                        animate={{
+                            y: [0, -10, 0], // float up and down
+                        }}
+                        transition={{
+                            duration: 2,
+                            ease: "easeInOut",
+                            repeat: Infinity,
+                        }}
+                        >
+                        <div className="bg-white shadow-2xl px-6 py-4 rounded-2xl border flex items-center gap-4">
+                            <Check className="text-green-500 w-[1em]"/>
+                            <div className="flex flex-col">
+                                <span className="text-sm font-medium">Note Saved</span>
+                                <span className="text-xs text-muted-foreground">2 seconds ago</span>
+                            </div>
+                        </div>
+                    </motion.div>
+    
+                    <div className="w-full flex justify-center md:justify-end">
+                        <Image
+                            src="/hero-desktop.png"
+                            alt="Hero"
+                            width={1440}
+                            height={1024}
+                            className="w-full max-w-md md:max-w-none object-cover shadow-2xl rounded-2xl border"
+                        />
+                    </div>
+                </div>        
             </div>
         </section>
     );

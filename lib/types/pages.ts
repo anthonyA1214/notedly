@@ -22,9 +22,27 @@ export interface EditPageDialogProps extends DialogControlProps {
     }
 }
 
+export interface EditPageFormProps {
+    slug: string;
+    item: {
+        id: string;
+        title: string;
+        category: string;
+    },
+    onSuccess: () => void;
+}
+
 export interface DeletePageDialogProps extends DialogControlProps {
     item: {
         id: string;
         title: string;
     }
+}
+
+export interface DeletePageFormProps {
+    slug: string;
+    item: {
+        id: string;
+    },
+    onSuccess: () => void;
 }
