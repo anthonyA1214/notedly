@@ -1,18 +1,17 @@
 import { z } from "zod";
 import { getCategoryValues } from "@/lib/data/categoryItems";
 
-export const CreateNewNoteFormSchema = z.object({
-    slug: z.string().min(1, "Page slug is required."),
+export const CreateNewPageFormSchema = z.object({
     title: z.string().min(1, "Title is required."),
-    content: z.string().nullable(),
     category: z.enum(getCategoryValues(), "Please select a valid category."),
 })
 
-export const EditNoteFormSchema = CreateNewNoteFormSchema.extend({
+export const EditPageFormSchema = CreateNewPageFormSchema.extend({
     id: z.string().min(1, "Id is required."),
+    currentPageSlug: z.string().min(1, "Page slug is required."),
 })
 
-export const DeleteNoteFormSchema = z.object({
+export const DeletePageFormSchema = z.object({
     id: z.string().min(1, "Id is required."),
-    slug: z.string().min(1, "Page slug is required."),
+    currentPageSlug: z.string().min(1, "Page slug is required."),
 })
