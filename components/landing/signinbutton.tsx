@@ -9,9 +9,7 @@ export default function SignInButton() {
     return (
         <Tooltip>
             <TooltipTrigger asChild>
-                <Button 
-                    className="bg-[#A590DB] hover:bg-[#9582C5] active:bg-[#8473AF]"
-                >
+                <Button variant="ghost" className="text-lg hover:text-[#9582C5] active:text-[#8473AF]">
                     Sign In
                 </Button>
             </TooltipTrigger>

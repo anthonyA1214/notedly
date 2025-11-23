@@ -6,7 +6,7 @@ import {
     InputGroupAddon,
     InputGroupInput,
 } from "@/components/ui/input-group"
-import TopNavShadow from "./topnavshadow";
+import TopNavShadow from "@/components/topnavshadow";
 
 export default function TopNav() {
     return (
