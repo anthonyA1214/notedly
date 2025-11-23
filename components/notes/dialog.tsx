@@ -11,7 +11,6 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button";
 import { NoteCategorySelect } from "@/components/notes/select";
@@ -23,8 +22,16 @@ import {
     EditPageDialogProps,
     DeletePageDialogProps,
 } from "@/lib/types/pages";
-import CreateNewNoteForm from "@/components/notes/createnewnoteform";
+import CreateNewNoteForm from "@/components/notes/forms/createnewnoteform";
+import EditNoteForm from "@/components/notes/forms/editnoteform";
+import DeleteNoteForm from "@/components/notes/forms/deletenoteform";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
+
+function useSlug() {
+    const pathname = usePathname();
+    return pathname.split("/").pop() ?? "";
+}
 
 // NOTES
 export function CreateNewNoteDialog({
@@ -42,7 +49,7 @@ export function CreateNewNoteDialog({
                         Fill in the details below to create a new note.
                     </DialogDescription>
                 </DialogHeader>
-                <CreateNewNoteForm onSuccess={() => setOpen(false) } />
+                <CreateNewNoteForm slug={useSlug()} onSuccess={() => setOpen(false) } />
             </DialogContent>
         </Dialog>
     )
@@ -59,35 +66,7 @@ export function EditNoteDialog({ open, setOpen, note }: EditNoteDialogProps) {
                         Fill in the details below to edit the note.
                     </DialogDescription>
                 </DialogHeader>
-
-                <div className="grid gap-4 py-4">
-                    <div className="grid gap-2">
-                        <Label htmlFor="note-title">Title</Label>
-                        <Input id="note-title" name="note-title" placeholder="Enter note title" defaultValue={note?.title} />
-                    </div>
-
-                    <div className="grid gap-2">
-                        <Label htmlFor="note-category">Category</Label>
-                        <NoteCategorySelect defaultValue={note?.category} />
-                    </div>
-
-                    <div className="grid gap-2">
-                        <Label htmlFor="note-content">Content</Label>
-                        <Textarea className="max-h-40" id="note-content" name="note-content" placeholder="Enter note content" defaultValue={note?.content ?? ""} />
-                    </div>
-                </div>
-
-                <DialogFooter>
-                    <DialogClose asChild>
-                        <Button variant="outline">Cancel</Button>
-                    </DialogClose>
-                    <Button
-                        type="submit"
-                        className="bg-[#A590DB] hover:bg-[#9582C5] active:bg-[#8473AF]"
-                    >
-                        Edit Note
-                    </Button>
-                </DialogFooter>
+                <EditNoteForm slug={useSlug()} note={note} onSuccess={() => setOpen(false)} />
             </DialogContent>
         </Dialog>
     )
@@ -105,17 +84,7 @@ export function DeleteNoteDialog({ open, setOpen, note }: DeleteNoteDialogProps)
                     </DialogDescription>
                 </DialogHeader>
 
-                <DialogFooter>
-                    <DialogClose asChild>
-                        <Button variant="outline">Cancel</Button>
-                    </DialogClose>
-                    <Button
-                        type="submit"
-                        className="bg-red-500 hover:bg-red-600 active:bg-red-700"
-                    >
-                        Delete Note
-                    </Button>
-                </DialogFooter>
+                <DeleteNoteForm slug={useSlug()} note={note} onSuccess={() => setOpen(false)} />
             </DialogContent>
         </Dialog>
     )

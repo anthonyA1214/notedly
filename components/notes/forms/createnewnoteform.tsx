@@ -9,16 +9,12 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button";
 import { NoteCategorySelect } from "@/components/notes/select";
-import { usePathname } from "next/navigation";
-import { createNote, type State } from "@/lib/actions/notes";
+import { createNote, type createState } from "@/lib/actions/notes";
 import { useActionState, useEffect } from "react"
 import { Spinner } from "@/components/ui/spinner"
 
-export default function CreateNewNoteForm({ onSuccess }: { onSuccess: () => void }) {
-    const pathname = usePathname();
-    const slug = pathname.split('/').pop();
-
-    const initialState: State = {
+export default function CreateNewNoteForm({ slug, onSuccess }: { slug: string, onSuccess: () => void }) {
+    const initialState: createState = {
         status: null,
         errors: null
     };
@@ -32,7 +28,7 @@ export default function CreateNewNoteForm({ onSuccess }: { onSuccess: () => void
     return (
         <form action={formAction} >
             {/* Hidden input to store the current page slug */}
-            <Input type="hidden" name="slug" value={slug} />
+            <Input type="hidden" name="slug" defaultValue={slug} />
 
             {/* input fields */}
             <div className="grid gap-4 py-4">

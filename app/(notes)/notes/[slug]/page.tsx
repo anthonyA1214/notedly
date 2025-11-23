@@ -17,7 +17,13 @@ export default async function NotesPage({
 
     const page = await prisma.page.findUnique({
         where: { slug },
-        include: { notes: true }
+        include: { 
+            notes: {
+                orderBy: {
+                    updatedAt: "desc",
+                }
+            }
+        }
     })
 
     if (!page) return <EmptyPageNotFound />;
