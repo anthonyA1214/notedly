@@ -4,7 +4,7 @@ export default function CallToActionSection() {
   return (
     <section
       id="features"
-      className="flex justify-center items-center py-20 bg-[#A590DB]"
+      className="flex justify-center items-center py-20 bg-[#A590DB] px-4"
     >
       <div className="flex flex-col items-center justify-center gap-10 text-center text-white max-w-2xl">
         <div className="flex flex-col gap-4">
@@ -18,23 +18,24 @@ export default function CallToActionSection() {
           </p>
         </div>
 
-        <div className="flex gap-4 items-center">
+        <div className="flex flex-col w-full md:flex-row gap-4 items-center justify-center">
           <button
-            className="flex items-center justify-center gap-2 text-[#A590DB] bg-white px-10 py-4 rounded-2xl text-lg
-          hover:shadow-xl hover:scale-105 transition duration-200 font-medium"
+            className="flex items-center justify-center gap-2 text-[#A590DB] bg-white px-10 py-4 rounded-2xl 
+            text-base sm:text-lg
+            hover:shadow-xl hover:scale-105 transition duration-200 font-medium w-full md:w-fit"
           >
             Start Your Free Trial <ArrowRight className="w-[1em]" />
           </button>
 
           <button
             className="flex items-center justify-center gap-2 bg-transparent border-2 border-white 
-          px-10 py-4 rounded-2xl text-lg hover:bg-white/10 font-medium transition duration-200"
+          px-10 py-3 md:py-4 rounded-2xl text-base sm:text-lg hover:bg-white/10 font-medium transition duration-200 w-full md:w-fit"
           >
             Watch Demo
           </button>
         </div>
 
-        <span className="text-sm">
+        <span className="text-xs sm:text-sm">
           No credit card required • 14-day free trial • Cancel anytime
         </span>
       </div>

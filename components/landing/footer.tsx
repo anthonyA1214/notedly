@@ -31,8 +31,8 @@ const legalLinks = [
 export default function Footer() {
   return (
     <footer className="py-16 text-white bg-[#101828]">
-      <div className="mx-auto max-w-356">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5">
+      <div className="mx-auto max-w-356 px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 sm:gap-8 md:gap-12">
           {/* Logo, taglines and social */}
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-3">
@@ -145,19 +145,21 @@ export default function Footer() {
 
         <Separator className="my-10 bg-muted-foreground" />
 
-        <div className="text-center grid gap-1">
+        <div className="text-center grid gap-4">
           <p className="text-sm text-muted-foreground">
             Everything on this landing page is for practice only. The working
             app is available on the other page.
           </p>
 
-          <span className="flex items-center gap-2 justify-center">
-            Made with <Heart className="inline-block w-4 h-4 text-red-500" /> by
-            anthonyA1214
-          </span>
-          <span>
-            &copy; 2025 <strong>anthonyA1214</strong> | All rights reserved.
-          </span>
+          <div className="space-y-1">
+            <span className="flex items-center gap-2 justify-center">
+              Made with <Heart className="inline-block w-4 h-4 text-red-500" />{" "}
+              by anthonyA1214
+            </span>
+            <span>
+              &copy; 2025 <strong>anthonyA1214</strong> | All rights reserved.
+            </span>
+          </div>
         </div>
       </div>
     </footer>

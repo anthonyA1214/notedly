@@ -32,7 +32,7 @@ export default function SectionHero() {
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 w-full">
             <button
               className="flex items-center justify-center gap-2 bg-[#A590DB] hover:bg-[#9582C5] active:bg-[#8473AF] 
-              text-white px-10 py-4 rounded-2xl text-lg
+              text-white px-10 py-3 md:py-4 rounded-2xl text-base sm:text-lg
                 hover:shadow-xl hover:scale-105 transition duration-200 font-medium"
             >
               Start Free Trial <ArrowRight className="w-[1em]" />
@@ -40,7 +40,7 @@ export default function SectionHero() {
             <button
               className="flex items-center justify-center gap-2 bg-transparent border-2 
               hover:border-[#9582C5] hover:text-[#9582C5] active:border-[#8473AF] active:text-[#8473AF]
-              px-10 py-4 rounded-2xl text-lg font-medium transition duration-200"
+              px-10 py-3 md:py-4 rounded-2xl text-base sm:text-lg font-medium transition duration-200"
             >
               Watch Demo
             </button>
