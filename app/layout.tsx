@@ -3,21 +3,23 @@ import { montserrat } from "@/app/config/fonts";
 import "@/app/globals.css";
 
 export const metadata: Metadata = {
-    title: {
-        default: "Notedly",
-        template: "%s | Notedly",
-    },
-    description: "A simple note taking app built with Next.js",
+  title: {
+    default: "Notedly",
+    template: "%s | Notedly",
+  },
+  description: "A simple note taking app built with Next.js",
 };
 
 export default function RootLayout({
-    children,
+  children,
 }: Readonly<{ children: React.ReactNode }>) {
-    return (
-        <html lang="en">
-            <body className={`${montserrat.className} antialiased bg-[#F2F3F5] min-h-screen`}>
-                {children}
-            </body>
-        </html>
-    );
+  return (
+    <html lang="en">
+      <body
+        className={`${montserrat.className} antialiased bg-[#F2F3F5] min-h-screen`}
+      >
+        {children}
+      </body>
+    </html>
+  );
 }
