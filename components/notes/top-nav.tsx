@@ -1,12 +1,9 @@
-import { Search } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "@/components/ui/input-group";
 import TopNavShadow from "@/components/topnavshadow";
+import NotesSearch from "@/components/notes/notes-search";
+import { NotesSearchSkeleton } from "@/components/notes/skeleton";
+import { Suspense } from "react";
 
 export default function TopNav() {
   return (
@@ -17,12 +14,9 @@ export default function TopNav() {
       >
         <nav className="flex w-full justify-between p-4 gap-4 items-center">
           <SidebarTrigger className="md:hidden" />
-          <InputGroup className="max-w-sm">
-            <InputGroupInput placeholder="Search notes..." />
-            <InputGroupAddon>
-              <Search />
-            </InputGroupAddon>
-          </InputGroup>
+          <Suspense fallback={<NotesSearchSkeleton />}>
+            <NotesSearch />
+          </Suspense>
 
           <Avatar>
             <AvatarImage src="https://github.com/shadcn.png" />

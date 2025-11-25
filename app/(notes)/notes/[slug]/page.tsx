@@ -6,11 +6,16 @@ import { redirect } from "next/navigation";
 
 export default async function NotesPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ slug: string }>;
+  searchParams: { q?: string };
 }) {
   const { slug } = await params;
+  const search = await searchParams;
+  const q = search?.q || "";
 
+  console.log(q);
   const pagesCount = await prisma.page.count();
 
   if (pagesCount === 0) {
@@ -21,6 +26,11 @@ export default async function NotesPage({
     where: { slug },
     include: {
       notes: {
+        where: q
+          ? {
+              OR: [{ title: { contains: q, mode: "insensitive" } }],
+            }
+          : undefined,
         orderBy: {
           updatedAt: "desc",
         },

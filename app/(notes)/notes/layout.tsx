@@ -10,7 +10,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Toaster } from "@/components/ui/sonner";
 import { Suspense } from "react";
 import QuoteCardServer from "@/components/notes/quote-card.server";
-import QuoteCardSkeleton from "@/components/notes/skeleton";
+import { QuoteCardSkeleton } from "@/components/notes/skeleton";
 
 export default async function NotesLayout({
   children,

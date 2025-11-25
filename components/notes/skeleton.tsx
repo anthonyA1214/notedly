@@ -44,7 +44,7 @@ function NoteCardSkeleton() {
   );
 }
 
-export default function QuoteCardSkeleton() {
+export function QuoteCardSkeleton() {
   return (
     <div
       className="
@@ -61,6 +61,14 @@ export default function QuoteCardSkeleton() {
 
       {/* Author skeleton pushes to bottom */}
       <Skeleton className="h-3 sm:h-4 md:h-5 w-24 mt-auto" />
+    </div>
+  );
+}
+
+export function NotesSearchSkeleton() {
+  return (
+    <div className="w-full max-w-sm flex gap-2">
+      <Skeleton className="flex-1 h-10 rounded-md bg-[#E1E3E7] w-full" />
     </div>
   );
 }
