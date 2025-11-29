@@ -32,7 +32,7 @@ export default function Footer() {
   return (
     <footer className="py-16 text-white bg-[#101828]">
       <div className="mx-auto max-w-356 px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 sm:gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-5 w-full gap-6 sm:gap-8 md:gap-12">
           {/* Logo, taglines and social */}
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-3">
@@ -74,72 +74,74 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* products */}
-          <div className="flex flex-col gap-4">
-            <h3 className="font-semibold text-xl">Product</h3>
-            <ul className="flex flex-col text-sm text-muted-foreground gap-3">
-              {productLinks.map((product, i) => (
-                <li key={i}>
-                  <a
-                    href="#"
-                    className="hover:text-[#9582C5] active:text-[#8473AF] transition duration-200"
-                  >
-                    {product}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-12 col-span-4">
+            {/* products */}
+            <div className="flex flex-col gap-4">
+              <h3 className="font-semibold text-xl">Product</h3>
+              <ul className="flex flex-col text-sm text-muted-foreground gap-3">
+                {productLinks.map((product, i) => (
+                  <li key={i}>
+                    <a
+                      href="#"
+                      className="hover:text-[#9582C5] active:text-[#8473AF] transition duration-200"
+                    >
+                      {product}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* company */}
-          <div className="flex flex-col gap-4">
-            <h3 className="font-semibold text-xl">Company</h3>
-            <ul className="flex flex-col text-sm text-muted-foreground gap-3">
-              {companyLinks.map((company, i) => (
-                <li key={i}>
-                  <a
-                    href="#"
-                    className="hover:text-[#9582C5] active:text-[#8473AF] transition duration-200"
-                  >
-                    {company}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+            {/* company */}
+            <div className="flex flex-col gap-4">
+              <h3 className="font-semibold text-xl">Company</h3>
+              <ul className="flex flex-col text-sm text-muted-foreground gap-3">
+                {companyLinks.map((company, i) => (
+                  <li key={i}>
+                    <a
+                      href="#"
+                      className="hover:text-[#9582C5] active:text-[#8473AF] transition duration-200"
+                    >
+                      {company}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* resources */}
-          <div className="flex flex-col gap-4">
-            <h3 className="font-semibold text-xl">Resources</h3>
-            <ul className="flex flex-col text-sm text-muted-foreground gap-3">
-              {resourcesLinks.map((resource, i) => (
-                <li key={i}>
-                  <a
-                    href="#"
-                    className="hover:text-[#9582C5] active:text-[#8473AF] transition duration-200"
-                  >
-                    {resource}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+            {/* resources */}
+            <div className="flex flex-col gap-4">
+              <h3 className="font-semibold text-xl">Resources</h3>
+              <ul className="flex flex-col text-sm text-muted-foreground gap-3">
+                {resourcesLinks.map((resource, i) => (
+                  <li key={i}>
+                    <a
+                      href="#"
+                      className="hover:text-[#9582C5] active:text-[#8473AF] transition duration-200"
+                    >
+                      {resource}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* legal */}
-          <div className="flex flex-col gap-4">
-            <h3 className="font-semibold text-xl">Legal</h3>
-            <ul className="flex flex-col text-sm text-muted-foreground gap-3">
-              {legalLinks.map((legal, i) => (
-                <li key={i}>
-                  <a
-                    href="#"
-                    className="hover:text-[#9582C5] active:text-[#8473AF] transition duration-200"
-                  >
-                    {legal}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            {/* legal */}
+            <div className="flex flex-col gap-4">
+              <h3 className="font-semibold text-xl">Legal</h3>
+              <ul className="flex flex-col text-sm text-muted-foreground gap-3">
+                {legalLinks.map((legal, i) => (
+                  <li key={i}>
+                    <a
+                      href="#"
+                      className="hover:text-[#9582C5] active:text-[#8473AF] transition duration-200"
+                    >
+                      {legal}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
